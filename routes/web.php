@@ -12,7 +12,42 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
-    return view('welcome');
+    $name = request('name');
+    return $name;
+
+  /*  return view('welcome', [
+       'name' => $name
+  ]
+
+  );
 });
+
+
+Route::get('/portki', function () {
+    
+    $name = request('name');
+    return view('ppportki', [
+        'name' => $name
+    ]);
+});
+
+Route::get('/posts/{post}', function($post) {
+   $posts = [
+        'pierblog' => 'SIEMA TO JA RAFON',
+        'drugblog' => 'SPRAWDZWAM SIE NA TYM POZYTYWNYM BICIE WARIACIE'
+   ];
+
+   if (! array_key_exists($post, $posts)){
+       abort(404, 'Sorry there is no portki here');
+   }
+
+   return view('post', [
+       'post' => $posts[$post]
+   ]);
+});
+
+*/
+
+Route::get('/posts/{post}', 'PostsController@show');
